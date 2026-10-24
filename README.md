@@ -40,3 +40,20 @@ Start the development server:
 
 Health endpoint: http://127.0.0.1:8000/health
 Interactive API documentation: http://127.0.0.1:8000/docs
+
+## Run the backend with Docker
+
+Requires Docker with its engine running.
+
+From the project root, build the image:
+
+    docker build -t study-session-api:dev ./backend
+
+Run the container:
+
+    docker run --rm --name study-session-api -p 127.0.0.1:8000:8000 study-session-api:dev
+
+Open http://127.0.0.1:8000/health or http://127.0.0.1:8000/docs.
+
+Stop the container with Control+C.
+Rebuild the image after changing application code or dependencies.
