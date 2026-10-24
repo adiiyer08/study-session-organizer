@@ -19,4 +19,24 @@ A full-stack application for creating and joining study sessions.
 
 ## Current status
 
-Project foundation. Application implementation is in progress.
+The backend provides a working GET /health endpoint.
+Frontend, database, authentication, and containerization are planned.
+
+## Run the backend locally
+
+Create the environment once:
+
+    conda create --name study-session-organizer python=3.12 pip
+
+From the project root, activate the environment and install dependencies:
+
+    conda activate study-session-organizer
+    python -m pip install -r backend/requirements.txt
+
+Start the development server:
+
+    cd backend
+    python -m uvicorn app.main:app --reload
+
+Health endpoint: http://127.0.0.1:8000/health
+Interactive API documentation: http://127.0.0.1:8000/docs
