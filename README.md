@@ -19,20 +19,13 @@ A full-stack application for creating and joining study sessions.
 
 ## Current status
 
-The API supports health checks and creating and listing study sessions.
-Creation validates text fields, timezone-aware future start times, and
-capacity limits. Nine automated tests cover creation, listing, unique IDs,
-and invalid input.
+Docker Compose runs the API and PostgreSQL together. The API connects to
+PostgreSQL, and GET /health/ready verifies database connectivity.
+GET /health checks that the API responds.
 
-Docker Compose runs the API and a PostgreSQL database together.
-PostgreSQL uses a named volume to retain database data between container
-restarts, but the API is not yet connected to it.
-
-Sessions are currently stored in application memory and are lost when the
-API restarts. Storage is not shared between server processes.
-
-Next: connect the API to PostgreSQL for persistent session storage.
-Frontend, authentication, and public deployment are planned.
+PostgreSQL uses a named volume for persistent database files. Study sessions
+are still stored in application memory; database-backed session storage is
+the next milestone.
 
 ## Run backend tests
 
