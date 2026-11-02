@@ -64,3 +64,14 @@ Open http://127.0.0.1:8000/health or http://127.0.0.1:8000/docs.
 
 Stop the container with Control+C.
 Rebuild the image after changing application code or dependencies.
+
+## Run backend tests
+
+With the project's Conda environment active, run from the project root:
+
+    python -m pip install -r backend/requirements-dev.txt
+    cd backend
+    python -m pytest -v
+
+Tests cover creation, listing, unique IDs, and rejection of invalid input.
+Each test starts with empty in-memory storage.
