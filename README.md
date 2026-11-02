@@ -19,8 +19,15 @@ A full-stack application for creating and joining study sessions.
 
 ## Current status
 
-The backend provides a working GET /health endpoint.
-Frontend, database, authentication, and containerization are planned.
+The API supports health checks and creating and listing study sessions.
+Creation validates text fields, timezone-aware future start times, and
+capacity limits.
+
+Sessions are temporarily stored in process memory and are lost when the
+server restarts. Storage is not shared between server processes.
+
+Frontend, persistent database storage, authentication, and public deployment
+are planned. Docker packaging is available.
 
 ## Run the backend locally
 

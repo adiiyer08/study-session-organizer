@@ -1,4 +1,5 @@
 from datetime import datetime, timezone
+from uuid import UUID
 
 from pydantic import AwareDatetime, BaseModel, ConfigDict, Field, field_validator
 
@@ -21,3 +22,11 @@ class StudySessionCreate(BaseModel):
         if value <= datetime.now(timezone.utc):
             raise ValueError("Session start time must be in the future")
         return value
+
+class StudySessionRead(BaseModel):
+    id: UUID
+    title: str
+    course: str
+    location: str
+    starts_at: AwareDatetime
+    capacity: int
