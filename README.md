@@ -19,13 +19,11 @@ A full-stack application for creating and joining study sessions.
 
 ## Current status
 
-Docker Compose runs the API and PostgreSQL together. The API connects to
-PostgreSQL, and GET /health/ready verifies database connectivity.
-GET /health checks that the API responds.
+The PostgreSQL study_sessions table is managed through Alembic migrations.
+The API can check database connectivity, but session endpoints still use
+temporary in-memory storage.
 
-PostgreSQL uses a named volume for persistent database files. Study sessions
-are still stored in application memory; database-backed session storage is
-the next milestone.
+Next: connect session creation and listing to PostgreSQL.
 
 ## Run backend tests
 
@@ -100,3 +98,17 @@ Running `docker compose down -v` also deletes the database volume and its data.
 
 The API currently stores sessions in memory. PostgreSQL is running but is
 not yet connected to the application.
+
+## Apply database migrations
+
+With PostgreSQL running, execute from the project root:
+
+    docker compose build api
+    docker compose run --rm api python -m alembic upgrade head
+
+Check the applied migration revision:
+
+    docker compose run --rm api python -m alembic current
+
+Apply migrations before starting application code that requires the new
+database structure.

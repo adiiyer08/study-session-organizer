@@ -17,3 +17,4 @@ uvicorn==0.54.0
 wheel==0.48.0
 SQLAlchemy==2.1.6
 psycopg[binary]==3.3.6
+alembic==1.20.1
