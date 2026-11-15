@@ -19,11 +19,12 @@ A full-stack application for creating and joining study sessions.
 
 ## Current status
 
-The PostgreSQL study_sessions table is managed through Alembic migrations.
-The API can check database connectivity, but session endpoints still use
-temporary in-memory storage.
+Session creation and listing now use PostgreSQL. Saved sessions survive
+container recreation through a persistent database volume.
 
-Next: connect session creation and listing to PostgreSQL.
+Automated tests are being updated to use an isolated PostgreSQL test
+database; the previous in-memory test setup is not compatible with the
+current endpoints.
 
 ## Run backend tests
 
